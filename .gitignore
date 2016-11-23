@@ -1,0 +1,8 @@
+**/target
+.idea
+*.iml
+/test/nbproject/private/
+/test/build/
+/ui/i18n/target/
+/ui/webui/target/
+/scripting/nbproject/
