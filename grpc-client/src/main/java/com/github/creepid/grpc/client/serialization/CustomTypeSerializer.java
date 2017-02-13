@@ -16,6 +16,7 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javassist.Modifier;
 
 /**
  *
@@ -46,9 +47,11 @@ public class CustomTypeSerializer extends AbstractSerializer {
 
             List<Field> fields = ReflectionUtil.getFields(cls);
             for (Field field : fields) {
-                Serializer serializer = SerializerContainer.findSerializerForClass(field.getType());
-                Object fieldObj = serializer.decode(stringTable, indexes);
-                field.set(decoded, fieldObj);
+                if (!Modifier.isTransient(field.getModifiers())) {
+                    Serializer serializer = SerializerContainer.findSerializerForClass(field.getType());
+                    Object fieldObj = serializer.decode(stringTable, indexes);
+                    field.set(decoded, fieldObj);
+                }
             }
 
         } catch (Exception ex) {

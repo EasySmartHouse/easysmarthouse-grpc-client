@@ -5,7 +5,6 @@
  */
 package com.github.creepid.grpc.client.serialization;
 
-import com.github.creepid.grpc.client.StringTableAware;
 import com.github.creepid.grpc.client.utils.ReflectionUtil;
 import java.util.ArrayDeque;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author rusakovich
  */
-public class SafeHtmlStringSerializer extends AbstractSerializer {
+public class SafeHtmlStringSerializer extends SerializerAdapter {
 
     private static final String SAFEHTML_UTILS_CLASS = "com.google.gwt.safehtml.shared.SafeHtmlUtils";
     private static final String SAFEHTML_STRING_CLASS_NAME = "com.google.gwt.safehtml.shared.SafeHtmlString";
@@ -35,16 +34,6 @@ public class SafeHtmlStringSerializer extends AbstractSerializer {
         }
 
         return SAFEHTML_STRING_CLASS_NAME.equalsIgnoreCase(cls.getName());
-    }
-
-    @Override
-    public void encodeValue(Object value, Class<?> methodType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void encodeType(Class<?> methodType, Class<?> runtimeType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

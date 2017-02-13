@@ -6,7 +6,6 @@
 package com.github.creepid.grpc.client.serialization;
 
 import com.github.creepid.grpc.client.StringTableAware;
-import com.github.creepid.grpc.client.utils.Base64Utils;
 import java.util.ArrayDeque;
 import java.util.List;
 
@@ -14,16 +13,19 @@ import java.util.List;
  *
  * @author rusakovich
  */
-public class LongSerializer extends SerializerAdapter {
+public abstract class SerializerAdapter extends AbstractSerializer {
 
     @Override
-    boolean match(Class<?> cls) {
-        return (cls == Long.class) || (cls == long.class);
+    public void encodeValue(Object value, Class<?> methodType, StringTableAware strTableAware) {
+    }
+
+    @Override
+    public void encodeType(Class<?> methodType, Class<?> runtimeType, StringTableAware strTableAware) {
     }
 
     @Override
     public Object decode(List<String> stringTable, ArrayDeque<String> indexes) {
-        return Base64Utils.longFromBase64(indexes.pop());
+        return null;
     }
 
 }

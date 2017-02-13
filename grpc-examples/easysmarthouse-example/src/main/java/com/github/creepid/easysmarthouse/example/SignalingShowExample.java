@@ -5,13 +5,13 @@
  */
 package com.github.creepid.easysmarthouse.example;
 
-import by.ginger.smarthome.provider.device.alarm.SignalingElement;
-import by.ginger.smarthome.ui.webui.client.rpc.SignalingService;
+import net.easysmarthouse.ui.webui.client.rpc.SignalingService;
 import com.github.creepid.grpc.client.GRPC;
 import java.util.List;
 import com.github.creepid.grpc.client.RequestHeader;
 import com.github.creepid.grpc.client.settings.GRpcSetting;
 import com.github.creepid.grpc.client.settings.GRpcSettings;
+import net.easysmarthouse.provider.device.alarm.SignalingElement;
 
 /**
  *
@@ -26,7 +26,7 @@ public class SignalingShowExample {
 
     static {
         SETTINGS.put(GRpcSetting.BASE_URL, "http://localhost:8080/webui/webui/");
-        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "4B4695FF053165CE27E233895D521C84");
+        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "7D1B5E7FA8BAD85B4FA9E004DF645255");
         SETTINGS.put(GRpcSetting.CUSTOM_HTTP_HTTPS_HEADER,
                 new RequestHeader("Accept-Language", "en-gb,en;q=0.5"));
 

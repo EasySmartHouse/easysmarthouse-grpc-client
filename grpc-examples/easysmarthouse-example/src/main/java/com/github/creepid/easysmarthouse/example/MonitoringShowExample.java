@@ -5,13 +5,14 @@
  */
 package com.github.creepid.easysmarthouse.example;
 
-import by.ginger.smarthome.provider.device.sensor.Sensor;
-import by.ginger.smarthome.ui.webui.client.rpc.MonitoringService;
 import com.github.creepid.grpc.client.GRPC;
+import com.github.creepid.grpc.client.RequestHeader;
 import com.github.creepid.grpc.client.settings.GRpcSetting;
 import com.github.creepid.grpc.client.settings.GRpcSettings;
-import com.github.creepid.grpc.client.RequestHeader;
+import com.github.creepid.grpc.client.transporter.HttpUrlConnectionTransporter;
 import java.util.List;
+import net.easysmarthouse.provider.device.sensor.Sensor;
+import net.easysmarthouse.ui.webui.client.rpc.MonitoringService;
 
 /**
  *
@@ -26,9 +27,10 @@ public class MonitoringShowExample {
 
     static {
         SETTINGS.put(GRpcSetting.BASE_URL, "http://localhost:8080/webui/webui/");
-        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "7AE96959866EBB432818F011EF52F86C");
+        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "88F34AC4FDF43EE523111A221B46FB00");
         SETTINGS.put(GRpcSetting.CUSTOM_HTTP_HTTPS_HEADER,
-                new RequestHeader("Accept-Language", "en-gb,en;q=0.5"));
+                new RequestHeader("Accept-Language", "ru-ru,ru;q=0.5"));
+        GRPC.setTransporterClass(HttpUrlConnectionTransporter.class);
 
         service = (MonitoringService) GRPC.create(MonitoringService.class, SETTINGS);
     }

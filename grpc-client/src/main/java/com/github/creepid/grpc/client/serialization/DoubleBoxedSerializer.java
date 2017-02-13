@@ -5,7 +5,6 @@
  */
 package com.github.creepid.grpc.client.serialization;
 
-import com.github.creepid.grpc.client.StringTableAware;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.Map;
  *
  * @author rusakovich
  */
-public class DoubleBoxedSerializer extends AbstractSerializer {
+public class DoubleBoxedSerializer extends SerializerAdapter {
 
     //TODO replase with HashMap with keys as stringTable
     private Map<Integer, Double> stored = new HashMap<>();
@@ -52,16 +51,6 @@ public class DoubleBoxedSerializer extends AbstractSerializer {
         Double dblValue = Double.parseDouble(indexes.pop());
         saveLast(dblValue, stringTable);
         return dblValue;
-    }
-
-    @Override
-    public void encodeValue(Object value, Class<?> methodType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void encodeType(Class<?> methodType, Class<?> runtimeType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

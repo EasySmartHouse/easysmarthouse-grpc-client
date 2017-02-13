@@ -6,30 +6,14 @@
  */
 package com.github.creepid.grpc.client;
 
-import com.github.creepid.grpc.client.settings.GRpcSetting;
-import com.github.creepid.grpc.client.settings.GRpcSettings;
-import com.github.creepid.grpc.client.serialization.Serializer;
-import com.github.creepid.grpc.client.serialization.SerializerContainer;
+import com.github.creepid.grpc.client.settings.*;
+import com.github.creepid.grpc.client.serialization.*;
 import com.github.creepid.grpc.client.utils.ClassHelper;
+import com.github.creepid.grpc.client.utils.collections.filter.*;
+import com.github.creepid.grpc.client.utils.collections.process.*;
 import static com.github.creepid.grpc.client.utils.collections.CollectionsHelper.*;
-import com.github.creepid.grpc.client.utils.collections.filter.CollectionFilter;
-import com.github.creepid.grpc.client.utils.collections.filter.CustomTypeFieldsValueAdder;
-import com.github.creepid.grpc.client.utils.collections.filter.DublicateElementsFilter;
-import com.github.creepid.grpc.client.utils.collections.filter.EmptyStringElementsFilter;
-import com.github.creepid.grpc.client.utils.collections.filter.NativeTypeFilter;
-import com.github.creepid.grpc.client.utils.collections.process.GRpcEncodeClassProcessor;
-import com.github.creepid.grpc.client.utils.collections.filter.NullElementsFilter;
-import com.github.creepid.grpc.client.utils.collections.process.StringConvertor;
-import com.github.creepid.grpc.client.utils.collections.filter.ZeroElementsFilter;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 /**
  *
@@ -39,7 +23,6 @@ class GRpcRequestBuilder implements RpcRequestBuilder, StringTableAware {
 
     private static final RequestHeader[] MANDATORY_HEADERS = new RequestHeader[]{
         new RequestHeader("Content-Type", "text/x-gwt-rpc; charset=utf-8"),
-        new RequestHeader("Accept-Encoding", "gzip, deflate"),
         new RequestHeader("Keep-Alive", "115"),
         new RequestHeader("Cache-Control", "no-cache"),
         new RequestHeader("Pragma", "no-cache"),

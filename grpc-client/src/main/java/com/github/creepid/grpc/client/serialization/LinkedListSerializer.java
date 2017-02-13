@@ -5,7 +5,6 @@
  */
 package com.github.creepid.grpc.client.serialization;
 
-import com.github.creepid.grpc.client.StringTableAware;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author rusakovich
  */
-public class LinkedListSerializer extends AbstractSerializer {
+public class LinkedListSerializer extends SerializerAdapter {
 
     @Override
     boolean match(Class<?> cls) {
@@ -49,14 +48,5 @@ public class LinkedListSerializer extends AbstractSerializer {
         return list;
     }
 
-    @Override
-    public void encodeValue(Object value, Class<?> methodType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void encodeType(Class<?> methodType, Class<?> runtimeType, StringTableAware strTableAware) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

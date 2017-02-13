@@ -19,7 +19,22 @@ public class SerializerContainer {
 
     private static final Set<AbstractSerializer> SERIALIZERS = new HashSet<>();
 
-    private static void registerAllAvailableSerializers(String packageName) {
+    private static void registerAllSerializersStatic() {
+        SERIALIZERS.add(new ArrayListSerializer());
+        SERIALIZERS.add(new BooleanSerializer());
+        SERIALIZERS.add(new CustomTypeSerializer());
+        SERIALIZERS.add(new DoubleBoxedSerializer());
+        SERIALIZERS.add(new DoubleUnboxedSerializer());
+        SERIALIZERS.add(new EnumSerializer());
+        SERIALIZERS.add(new LinkedListSerializer());
+        SERIALIZERS.add(new LongSerializer());
+        SERIALIZERS.add(new NativeTypeSerializer());
+        SERIALIZERS.add(new ObjectSerializer());
+        SERIALIZERS.add(new SafeHtmlStringSerializer());
+        SERIALIZERS.add(new StringSerializer());
+    }
+
+    private static void registerAllSerializersDynamic(String packageName) {
         Reflections reflections = new Reflections(packageName);
         Set<Class<? extends AbstractSerializer>> serializerClasses = reflections.getSubTypesOf(AbstractSerializer.class);
         for (Class<? extends AbstractSerializer> serializerClass : serializerClasses) {
@@ -30,7 +45,10 @@ public class SerializerContainer {
     }
 
     static {
-        registerAllAvailableSerializers("com.github.creepid.grpc.client.serialization");
+        registerAllSerializersDynamic("com.github.creepid.grpc.client.serialization");
+        if (SERIALIZERS.isEmpty()) {
+            registerAllSerializersStatic();
+        }
     }
 
     private SerializerContainer() {

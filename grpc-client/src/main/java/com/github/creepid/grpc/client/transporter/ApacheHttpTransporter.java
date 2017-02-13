@@ -22,12 +22,12 @@ import org.apache.http.util.EntityUtils;
  *
  * @author rusakovich
  */
-public class SimpleHttpTransporter extends AbstractTransporter {
+public class ApacheHttpTransporter extends AbstractTransporter {
 
     private final HttpClient client = HttpClientBuilder.create().build();
     private final HttpPost post;
 
-    public SimpleHttpTransporter(String url) {
+    public ApacheHttpTransporter(String url) {
         super(url);
         this.post = new HttpPost(url);
     }

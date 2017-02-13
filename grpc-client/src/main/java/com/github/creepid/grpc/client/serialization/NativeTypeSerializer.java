@@ -8,14 +8,12 @@ package com.github.creepid.grpc.client.serialization;
 import com.github.creepid.grpc.client.StringTableAware;
 import static com.github.creepid.grpc.client.utils.ClassHelper.isNative;
 import com.github.creepid.grpc.client.utils.ObjectUtil;
-import java.util.ArrayDeque;
-import java.util.List;
 
 /**
  *
  * @author rusakovich
  */
-public class NativeTypeSerializer extends AbstractSerializer {
+public class NativeTypeSerializer extends SerializerAdapter {
 
     @Override
     boolean match(Class<?> cls) {
@@ -25,11 +23,6 @@ public class NativeTypeSerializer extends AbstractSerializer {
 
         Serializer[] exclude = {this};
         return SerializerContainer.findSerializerForClass(cls, exclude) == null;
-    }
-
-    @Override
-    public Object decode(List<String> stringTable, ArrayDeque<String> indexes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

@@ -5,14 +5,13 @@
  */
 package com.github.creepid.easysmarthouse.example;
 
-import by.ginger.smarthome.provider.device.actuator.Actuator;
 import com.github.creepid.grpc.client.GRPC;
 import com.github.creepid.grpc.client.RequestHeader;
 import com.github.creepid.grpc.client.settings.GRpcSetting;
 import com.github.creepid.grpc.client.settings.GRpcSettings;
-import by.ginger.smarthome.ui.webui.client.rpc.ActuatorsService;
-import by.ginger.smarthome.ui.webui.client.rpc.TriggerService;
+import net.easysmarthouse.ui.webui.client.rpc.ActuatorsService;
 import java.util.List;
+import net.easysmarthouse.provider.device.actuator.Actuator;
 
 /**
  *
@@ -27,7 +26,7 @@ public class ActuatorsShowExample {
 
     static {
         SETTINGS.put(GRpcSetting.BASE_URL, "http://localhost:8080/webui/webui/");
-        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "716B355B2C588BA58EC6DD661C6990FB");
+        SETTINGS.put(GRpcSetting.POLICY_FILE_STRONG_NAME, "6B24294BDEE46C557C392AA0A803BCE9");
         SETTINGS.put(GRpcSetting.CUSTOM_HTTP_HTTPS_HEADER,
                 new RequestHeader("Accept-Language", "en-gb,en;q=0.5"));
 

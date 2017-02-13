@@ -11,7 +11,7 @@ import com.github.creepid.grpc.client.settings.GeneralSearchPolicy;
 import com.github.creepid.grpc.client.settings.GrpcRelativePathSearchPolicy;
 import com.github.creepid.grpc.client.settings.GwtRelativePathSearchPolicy;
 import com.github.creepid.grpc.client.settings.PropertySearchPolicy;
-import com.github.creepid.grpc.client.transporter.SimpleHttpTransporter;
+import com.github.creepid.grpc.client.transporter.ApacheHttpTransporter;
 import com.github.creepid.grpc.client.transporter.Transporter;
 import static com.github.creepid.grpc.client.utils.ReflectionUtil.*;
 import com.github.creepid.grpc.client.utils.UrlUtil;
@@ -23,7 +23,7 @@ import java.lang.reflect.Proxy;
  */
 public class GRPC {
 
-    private static Class<? extends Transporter> transporterClass = SimpleHttpTransporter.class;
+    private static Class<? extends Transporter> transporterClass = ApacheHttpTransporter.class;
     private static final GeneralSearchPolicy<String> relativePathSearchPolicy = new GeneralSearchPolicy<>(
             new GwtRelativePathSearchPolicy(), new GrpcRelativePathSearchPolicy());
 
